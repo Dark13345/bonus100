@@ -59,18 +59,52 @@
     .btn svg { transition: transform .2s; }
     .btn:hover svg { transform: translateX(3px); }
 
-    /* --- NAV --- */
-    nav {
-        display: flex; align-items: center; justify-content: space-between;
-        padding: 24px 0;
+    /* --- HEADER (как на perfex, тёмная тема) --- */
+    header.site { background: #181A20; color: #EAECEF; padding: 18px 0; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid #2B3139; }
+    header.site .nav { display: flex; align-items: center; gap: 28px; }
+    header.site .logo { font-family: 'Unbounded', 'Inter', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.02em; color: #EAECEF; text-decoration: none; }
+    header.site .logo .ex { color: #F0B90B; }
+    nav.main { flex: 1; }
+    nav.main ul { list-style: none; display: flex; gap: 22px; }
+    nav.main > ul > li { position: relative; }
+    nav.main > ul > li > a { color: #EAECEF; font-size: 15px; padding: 10px 0; display: block; font-weight: 500; }
+    nav.main > ul > li > a:hover { color: #F0B90B; }
+    nav.main li ul { display: none; position: absolute; top: 100%; left: 0; background: #1E2329; padding: 10px 0; min-width: 240px; border-radius: 0 0 6px 6px; box-shadow: 0 12px 32px rgba(0,0,0,.4); border: 1px solid #2B3139; border-top: 0; }
+    nav.main li:hover > ul { display: block; }
+    nav.main li ul li a { display: block; padding: 10px 20px; color: #B7BDC6; font-size: 14px; }
+    nav.main li ul li a:hover { background: #2B3139; color: #F0B90B; }
+    nav.main li.mega .megapanel { display: none; position: absolute; top: 100%; left: 0; background: #1E2329; padding: 28px 32px; border-radius: 0 0 6px 6px; box-shadow: 0 12px 32px rgba(0,0,0,.4); border: 1px solid #2B3139; border-top: 0; gap: 36px; }
+    nav.main li.mega:hover .megapanel { display: grid; }
+    nav.main li.mega.cols-3 .megapanel { grid-template-columns: repeat(3, minmax(180px, 1fr)); min-width: 640px; }
+    .mega-col h5 { font-family: 'Unbounded', 'Inter', sans-serif; color: #F0B90B; font-size: 11px; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 12px; font-weight: 700; }
+    .mega-col ul { list-style: none; margin: 0; padding: 0; position: static !important; display: block !important; background: transparent !important; box-shadow: none !important; min-width: 0 !important; border-radius: 0 !important; border: 0 !important; }
+    .mega-col ul li { margin-bottom: 2px; }
+    .mega-col ul li a { display: block; padding: 6px 0 !important; color: #B7BDC6 !important; font-size: 14px; background: transparent !important; }
+    .mega-col ul li a:hover { color: #F0B90B !important; }
+    .lang-switch { position: relative; }
+    .lang-btn { background: transparent; border: 0; padding: 8px 12px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; color: #EAECEF; font-size: 14px; font-weight: 600; font-family: inherit; border-radius: 20px; transition: background .2s; }
+    .lang-btn:hover { background: #2B3139; }
+    .lang-btn .lang-flag { font-size: 16px; line-height: 1; }
+    .lang-btn svg { opacity: 0.5; }
+    .lang-menu { position: absolute; top: 100%; right: 0; margin-top: 6px; background: #1E2329; border: 1px solid #2B3139; border-radius: 10px; box-shadow: 0 10px 28px rgba(0,0,0,.4); list-style: none; padding: 6px 0; min-width: 180px; display: none; z-index: 30; }
+    .lang-menu.open { display: block; }
+    .lang-menu li { padding: 10px 16px; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 12px; color: #EAECEF; transition: background .15s; }
+    .lang-menu li .lang-flag { font-size: 18px; }
+    .lang-menu li .lang-code { color: #848E9C; font-size: 12px; font-weight: 600; margin-left: auto; letter-spacing: 0.05em; }
+    .lang-menu li:hover { background: #2B3139; }
+    header.site .cta { background: #FCD535; color: #181A20; padding: 12px 28px; border-radius: 50px; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; transition: transform .25s ease, box-shadow .25s ease, background .25s ease; }
+    header.site .cta:not(.ghost):hover { background: #F0B90B; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(240,185,11,.32); }
+    header.site .cta.ghost { background: transparent; color: #EAECEF; padding: 9px 10px; text-transform: none; letter-spacing: 0; }
+    header.site .cta.ghost:hover { color: #F0B90B; }
+    @media (max-width: 900px) { nav.main ul { display: none; } }
+    @media (max-width: 700px) {
+        header.site .nav { gap: 12px; }
+        nav.main { display: none; }
+        header.site .logo { font-size: 20px; margin-right: auto; }
+        .lang-switch { display: none; }
+        header.site .cta.ghost { display: none; }
+        header.site .cta { padding: 9px 16px; font-size: 12px; }
     }
-    .logo { font-family: 'Unbounded', 'Inter', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.02em; color: var(--text); }
-    .logo .ex { color: var(--gold); }
-    .nav-cta {
-        font-size: 14px; font-weight: 500; color: var(--text-dim);
-        transition: color .2s;
-    }
-    .nav-cta:hover { color: var(--text); }
 
     /* --- HERO --- */
     .hero {
@@ -262,13 +296,63 @@
 </head>
 <body>
 
-<div class="wrap">
-    <!-- NAV -->
-    <nav>
-        <a class="logo" href="https://dark13345.github.io/perfex/">PERF<span class="ex">EX</span></a>
-        <a href="#start" class="nav-cta">Открыть счёт →</a>
-    </nav>
+<header class="site">
+<div class="wrap nav">
+<a class="logo" href="https://dark13345.github.io/perfex/">PERF<span class="ex">EX</span></a>
+<nav class="main"><ul>
+<li class="mega cols-3"><a href="https://dark13345.github.io/perfex/trading/index.html">Торговля</a>
+<div class="megapanel">
+<div class="mega-col"><h5>Условия торговли</h5><ul>
+<li><a href="https://dark13345.github.io/perfex/trading/cashback.html">Spreadback</a></li>
+<li><a href="https://dark13345.github.io/perfex/trading/cfd-spec.html">Спецификация контрактов</a></li>
+</ul></div>
+<div class="mega-col"><h5>Счета</h5><ul>
+<li><a href="https://dark13345.github.io/perfex/trading/accounts.html#standard">Standard</a></li>
+<li><a href="https://dark13345.github.io/perfex/trading/accounts.html#zero">Zero</a></li>
+<li><a href="https://dark13345.github.io/perfex/products/demo.html">Demo</a></li>
+<li><a href="https://dark13345.github.io/perfex/trading/islamic.html">Islamic (Swap-Free)</a></li>
+</ul></div>
+<div class="mega-col"><h5>Платформы</h5><ul>
+<li><a href="https://dark13345.github.io/perfex/trading/platforms.html">MetaTrader 4</a></li>
+</ul>
+<h5 style="margin-top:18px;">Финансы</h5><ul>
+<li><a href="https://dark13345.github.io/perfex/trading/deposits.html">Пополнение</a></li>
+<li><a href="https://dark13345.github.io/perfex/trading/withdrawal.html">Вывод средств</a></li>
+</ul></div>
+</div></li>
+<li><a href="https://dark13345.github.io/perfex/markets/index.html">Рынки</a><ul>
+<li><a href="https://dark13345.github.io/perfex/markets/forex.html">Forex</a></li>
+<li><a href="https://dark13345.github.io/perfex/markets/metals.html">Металлы</a></li>
+<li><a href="https://dark13345.github.io/perfex/markets/indices.html">Индексы</a></li>
+<li><a href="https://dark13345.github.io/perfex/markets/crypto.html">Криптовалюты</a></li>
+<li><a href="https://dark13345.github.io/perfex/markets/energies.html">Энергоносители</a></li>
+<li><a href="https://dark13345.github.io/perfex/markets/commodities.html">Сырьё</a></li>
+</ul></li>
+<li><a href="https://dark13345.github.io/perfex/partnership/index.html">Партнёрство</a></li>
+<li><a href="https://dark13345.github.io/perfex/promos.html">Акции</a><ul><li><a href="https://dark13345.github.io/bonus100/">Бонус на депозит до 100%</a></li><li><a href="https://dark13345.github.io/perfex/transfer-account.html">Переход от другого брокера</a></li></ul></li>
+<li><a href="https://dark13345.github.io/perfex/company/about.html">Компания</a><ul>
+<li><a href="https://dark13345.github.io/perfex/company/about.html">О компании</a></li>
+<li><a href="https://dark13345.github.io/perfex/company/documents.html">Документы</a></li>
+</ul></li>
+</ul></nav>
+<div class="lang-switch">
+<button class="lang-btn" aria-label="Язык" type="button">
+<span class="lang-flag">🇷🇺</span><span class="lang-code">RU</span>
+<svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 3 L5 7 L9 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+<ul class="lang-menu">
+<li data-flag="🇷🇺" data-code="RU"><span class="lang-flag">🇷🇺</span>Русский<span class="lang-code">RU</span></li>
+<li data-flag="🇬🇧" data-code="EN"><span class="lang-flag">🇬🇧</span>English<span class="lang-code">EN</span></li>
+<li data-flag="🇦🇪" data-code="AR"><span class="lang-flag">🇦🇪</span>العربية<span class="lang-code">AR</span></li>
+<li data-flag="🇻🇳" data-code="VT"><span class="lang-flag">🇻🇳</span>Tiếng Việt<span class="lang-code">VT</span></li>
+</ul>
+</div>
+<a class="cta ghost" href="#">Вход</a>
+<a class="cta" href="#">Регистрация</a>
+</div>
+</header>
 
+<div class="wrap">
     <!-- HERO -->
     <section class="hero">
         <div class="hero-text-col">
@@ -482,5 +566,27 @@
     update();
 </script>
 
+<script>
+(function(){
+  const lb = document.querySelector('.lang-btn');
+  const lm = document.querySelector('.lang-menu');
+  if (lb && lm) {
+    const fe = lb.querySelector('.lang-flag');
+    const ce = lb.querySelector('.lang-code');
+    const saved = localStorage.getItem('lang');
+    if (saved) { try { const d = JSON.parse(saved); fe.textContent = d.flag; ce.textContent = d.code; } catch(e){} }
+    lb.addEventListener('click', (e) => { e.stopPropagation(); lm.classList.toggle('open'); });
+    lm.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', () => {
+        const flag = li.dataset.flag, code = li.dataset.code;
+        fe.textContent = flag; ce.textContent = code;
+        localStorage.setItem('lang', JSON.stringify({flag, code}));
+        lm.classList.remove('open');
+      });
+    });
+    document.addEventListener('click', () => lm.classList.remove('open'));
+  }
+})();
+</script>
 </body>
 </html>
